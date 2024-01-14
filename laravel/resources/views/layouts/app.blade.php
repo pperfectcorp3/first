@@ -11,10 +11,18 @@
         {{-- <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" /> --}}
 
+        {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script> --}}
+        <link href="{{ asset('assets/css/flowbite.min-2.2.1.css') }}" rel="stylesheet" />
+        <script src="{{ asset('assets/js/flowbite.min-2.2.1.js') }}"></script>
+
         {{-- <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script> --}}
-        <script src="http://cdn.net/js/tailwind-3.4.1.js"></script>
-        <script src="http://cdn.net/js/tailwind-plugins_forms-typography-aspect-ratio-line-clamp-3.4.1.js"></script>
+        <script src="{{ asset("assets/js/tailwind-3.4.1.js") }}"></script>
+        <script src="{{ asset("assets/js/tailwind-plugins_forms-typography-aspect-ratio-line-clamp-3.4.1.js") }}"></script>
+
+        {{-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
+        <script defer src="{{ asset("assets/js/alpinejs.min-3.13.3.js") }}"></script>
 
         <!-- Scripts -->
         {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
