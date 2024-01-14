@@ -8,7 +8,7 @@
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-text-input id="email" class="block mt-1 w-full" name="email" :value="old('email')" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
@@ -22,6 +22,14 @@
                             required autocomplete="current-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+
+        <!-- View password -->
+        <div align="right" class="block mt-4">
+            <label for="view_pass" class="inline-flex items-center">
+                <input onclick="var el = document.querySelector('#password'); if(this.checked){el.setAttribute('type', 'text')}else{el.setAttribute('type', 'password')}" id="view_pass" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500">
+                <span class="ms-2 text-sm text-gray-600">{{ __('View Password') }}</span>
+            </label>
         </div>
 
         <!-- Remember Me -->
