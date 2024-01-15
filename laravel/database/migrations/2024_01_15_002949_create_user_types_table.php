@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->json('authorizations')->nullable();
-            $table->enum('type', ['admin', 'agent', 'simple'])->default('simple');
+            $table->enum('type', ['super', 'admin', 'agent', 'simple'])->default('simple');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
