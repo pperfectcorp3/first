@@ -16,8 +16,20 @@ class UserTypeFactory extends Factory
      */
     public function definition(): array
     {
+        $type = random_int(1, 3);
         return [
-            //
+            'user_id' => \User::inRandomOrder()->take(1)->first()->id
+            'authorizations' => json_encode($type == 1
+                ? [
+                    "article" => "crud",
+                    "agent" => "crud",
+                ]
+                : ($type == 2
+                    ? ["article" => "crud"]
+                    : null
+                )
+            ),
+            'type' => ['super', 'admin', 'agent', 'simple'][$type]
         ];
     }
 }
