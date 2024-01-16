@@ -16,10 +16,12 @@ class UserTypeFactory extends Factory
      */
     public function definition(): array
     {
-        $type = random_int(1, 3);
+        $type = random_int(random_int(0, 899) <= 145 ? 1 : 2, 3);
+        $user = \App\Models\User::inRandomOrder()->take(1)->first();
         return [
-            'user_id' => \User::inRandomOrder()->take(1)->first()->id
-            'authorizations' => json_encode($type == 1
+            'user_id' => $user->id,
+            'updated_by_user_id' => $user->isAdmin() ? $user->id : null,
+            'authorizations' => $type == 1
                 ? [
                     "article" => "crud",
                     "agent" => "crud",
@@ -28,8 +30,8 @@ class UserTypeFactory extends Factory
                     ? ["article" => "crud"]
                     : null
                 )
-            ),
-            'type' => ['super', 'admin', 'agent', 'simple'][$type]
+            ,
+            'type' => $type
         ];
     }
 }
