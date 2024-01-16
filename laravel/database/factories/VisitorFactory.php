@@ -19,10 +19,10 @@ class VisitorFactory extends Factory
     {
 
         return [
-            'ip_address' => faker()->ipv4,
-            'browser_type' => faker()->userAgent,
-            'referring_url' => faker()->url,
-            'visited_at' => Carbon::now(),
+            'ip_address' => fake()->ipv4,
+            'browser_type' => fake()->userAgent,
+            'referring_url' => fake()->url,
+            'visited_at' => fake()->dateTimeBetween(random_int(0, 6) == 1 ? '2024-01-01' : '2019-01-01' , '0 days')
             //
         ];
     }
