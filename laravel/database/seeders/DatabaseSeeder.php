@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,19 +15,21 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         if(!\App\Models\User::where('username', 'gt')->exists()){
-            \App\Models\User::factory()->create([
+            $u = \App\Models\User::factory()->create([
                 'name' => "Gedeon Timothy",
                 'email' => "gt@icloud.com",
                 'username' => "gt",
-                'email_verified_at' => now(),
-                'password' => Hash::make('12345678'),
-                'remember_token' => Str::random(10),
+            ]);
+            \App\Models\UserType::factory()->create([
+                'user_id' => $u->id,
+                'authorizations' => 'all',
+                'type' => 'super',
+                'updated_by_user_id' => null
             ]);
         }
-        $this->call([
-            UserSeeder::class,
-            UserTypeSeeder::class,
-            VisitorSeeder::class,
-        ]);
+        // $this->call([
+        //     UserSeeder::class,
+        //     VisitorSeeder::class,
+        // ]);
     }
 }
