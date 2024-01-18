@@ -31,7 +31,7 @@ class UserTypeFactory extends Factory
                     : null
                 )
             ,
-            'type' => $type
+            'type' => (string) $type
         ];
     }
 }

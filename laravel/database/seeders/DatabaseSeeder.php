@@ -23,13 +23,13 @@ class DatabaseSeeder extends Seeder
             \App\Models\UserType::factory()->create([
                 'user_id' => $u->id,
                 'authorizations' => 'all',
-                'type' => 'super',
+                'type' => "0",
                 'updated_by_user_id' => null
             ]);
         }
-        // $this->call([
-        //     UserSeeder::class,
-        //     VisitorSeeder::class,
-        // ]);
+        $this->call([
+            UserSeeder::class,
+            VisitorSeeder::class,
+        ]);
     }
 }
